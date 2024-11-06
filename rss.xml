@@ -10,7 +10,7 @@
         <title>Sunny</title>
         <link>https://example.com/</link>
         <description>MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</description>
-        <generator>Hugo 0.137.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.137.1 https://gohugo.io/</generator>
         
             <language>zh-CN</language>
         
@@ -21,7 +21,7 @@
             <webMaster>yuchendi123@gmail.com (sunny)</webMaster>
         
         
-        <lastBuildDate>Tue, 05 Nov 2024 08:26:01 &#43;0000</lastBuildDate>
+        <lastBuildDate>Wed, 06 Nov 2024 03:47:33 &#43;0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
