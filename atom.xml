@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Sunny</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2024-11-06T08:42:56&#43;00:00</updated>
+    <updated>2024-11-08T14:01:04&#43;00:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -15,12 +15,12 @@
                 <email>yuchendi123@gmail.com</email>
             </author>
     
-    <generator uri="https://gohugo.io/" version="0.137.1">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.138.0">Hugo</generator>
         <entry>
             <title type="text">Markdown语法练习</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/hello-world/" />
             <id>https://example.com/posts/hello-world/</id>
-            <updated>2024-11-06T08:42:53&#43;00:00</updated>
+            <updated>2024-11-08T14:01:02&#43;00:00</updated>
             <published>2024-11-04T00:00:00&#43;00:00</published>
             <author>
                     <name>sunny</name>
@@ -80,7 +80,7 @@
 &lt;pre&gt;&lt;code&gt;测试段落，这个块内的换行直接回车即可
 换行
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p style=&#34;text-indent:0&#34;&gt;&lt;span class=&#34;drop-cap&#34;&gt;测&lt;/span&gt;试段落（后面有两个空格）&lt;br&gt;
+&lt;p&gt;测试段落（后面有两个空格）&lt;br&gt;
 换行&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;span style=&#34;border-bottom: #ADD8E6 2px solid&#34;&gt;粗体 斜体&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;*斜体*  
@@ -271,7 +271,15 @@ print(a + b)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;**&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;span style=&#34;border-bottom: #ADD8E6 2px solid&#34;&gt;显示公式，可在此链接查看支持的符号&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://katex.org/docs/supported.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://katex.org/docs/supported.html&lt;/a&gt; ,此Meme主题支持的公式有待查阅&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://katex.org/docs/supported.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://katex.org/docs/supported.html&lt;/a&gt; ,渲染数学表达式需要将config.toml中的enableKaTeX设置为true&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;行内显示
+$f(x)=sin(x)+cos(x)$
+
+块内显示
+$$\sum_{n=1}^{100}$$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;$f(x)=sin(x)+cos(x)$&lt;/p&gt;
+&lt;p&gt;$$\sum_{n=1}^{100}$$&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -289,6 +297,14 @@ print(a + b)
                 
                     
                 
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://example.com/tags/markdown/" term="Markdown" label="Markdown" />
+                            
+                        
                     
                 
             
