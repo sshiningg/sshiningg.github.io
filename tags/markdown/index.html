@@ -17,7 +17,7 @@
 
     <title>标签：Markdown | Sunny</title>
 
-    <link rel="stylesheet" href="/css/meme.min.33472ecbb3de9b5f3384a6ea731ea5a34ea9397ba89320ccdf7cda580b1567ad.css"/>
+    <link rel="stylesheet" href="/css/meme.min.fa87613d0470bfff271e4c39e23bd7cb25d2c881b13f81656a75666d9b90d997.css"/>
 
     
     
@@ -59,7 +59,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "datePublished": "2024-11-04T00:00:00+00:00",
-        "dateModified": "2024-11-08T14:06:43+00:00",
+        "dateModified": "2024-11-09T15:57:33+00:00",
         "url": "https://example.com/tags/markdown/",
         "name": "标签：Markdown",
         "description": "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。",
@@ -101,6 +101,7 @@
     
 
     
+
 </head>
 
     <body>
@@ -155,7 +156,8 @@
     </ul>
 </nav>
 
-                    
+                    <a href="javascript:void(0);" onclick="toggleSakura()">🌸</a>
+
                 </div>
             </div>
             
@@ -559,6 +561,30 @@
 			}
 </script>
 </html>
+
+<script>
+    var sakuraEnabled = false; 
+
+    function toggleSakura() {
+        if (staticx) {
+        var canvas = document.getElementById("canvas_sakura");
+        if (canvas) {
+            
+            var cxt = canvas.getContext('2d');
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.parentNode.removeChild(canvas);
+        }
+
+        
+        window.cancelAnimationFrame(stop);
+        staticx = false;
+    } else {
+        startSakura();
+    }
+}
+</script>
+
+
 
 
     </body>

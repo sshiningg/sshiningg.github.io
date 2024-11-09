@@ -17,7 +17,7 @@
 
     <title>分类：三维重建 | Sunny</title>
 
-    <link rel="stylesheet" href="/css/meme.min.baaef07aea9540e4aa74b245f67c9d3ba494676cfbf05861b63abd1a8290f7c0.css"/>
+    <link rel="stylesheet" href="/css/meme.min.89a6da7425d6a603932ad6f6698f31d0e6907f925bd5b6a26ab084cc4c2c0c64.css"/>
 
     
     
@@ -59,7 +59,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "datePublished": "2024-11-06T00:00:00+00:00",
-        "dateModified": "2024-11-08T21:30:29+08:00",
+        "dateModified": "2024-11-09T17:00:29+08:00",
         "url": "http://localhost:1313/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/",
         "name": "分类：三维重建",
         "description": "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。",
@@ -101,6 +101,7 @@
     
 
     
+
 </head>
 
     <body>
@@ -155,7 +156,8 @@
     </ul>
 </nav>
 
-                    
+                    <a href="javascript:void(0);" onclick="toggleSakura()">🌸</a>
+
                 </div>
             </div>
             
@@ -559,6 +561,30 @@
 			}
 </script>
 </html>
+
+<script>
+    var sakuraEnabled = false; 
+
+    function toggleSakura() {
+        if (staticx) {
+        var canvas = document.getElementById("canvas_sakura");
+        if (canvas) {
+            
+            var cxt = canvas.getContext('2d');
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.parentNode.removeChild(canvas);
+        }
+
+        
+        window.cancelAnimationFrame(stop);
+        staticx = false;
+    } else {
+        startSakura();
+    }
+}
+</script>
+
+
 
 
     </body>
