@@ -967,26 +967,71 @@ $$L_{uncer}(r)=\frac{L_{SSIM}}{2\beta(r)^2}+\lambda_1 log\beta(r)$$</li>
 </html>
 
 <script>
-    var sakuraEnabled = false; 
+    var sakuraEnabled = localStorage.getItem("sakuraEnabled") === "true";  
+    var staticx = sakuraEnabled;  
+    var stop;  
+
+    function startSakura() {
+        if (!staticx) {
+            
+            var canvas = document.createElement('canvas');
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.setAttribute('style', 'position: fixed; left: 0; top: 0; pointer-events: none;');
+            canvas.setAttribute('id', 'canvas_sakura');
+            document.body.appendChild(canvas);
+
+            var cxt = canvas.getContext('2d');
+            var sakuraList = new SakuraList();
+            for (var i = 0; i < 50; i++) {
+                var sakura = new Sakura(getRandom('x'), getRandom('y'), getRandom('s'), getRandom('r'), {
+                    x: getRandom('fnx'),
+                    y: getRandom('fny'),
+                    r: getRandom('fnr')
+                });
+                sakura.draw(cxt);
+                sakuraList.push(sakura);
+            }
+
+            function animation() {
+                cxt.clearRect(0, 0, canvas.width, canvas.height);
+                sakuraList.update();
+                sakuraList.draw(cxt);
+                stop = requestAnimationFrame(animation);
+            }
+
+            stop = requestAnimationFrame(animation);
+            staticx = true;
+        }
+    }
 
     function toggleSakura() {
         if (staticx) {
-        var canvas = document.getElementById("canvas_sakura");
-        if (canvas) {
-            
-            var cxt = canvas.getContext('2d');
-            cxt.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.parentNode.removeChild(canvas);
+            var canvas = document.getElementById("canvas_sakura");
+            if (canvas) {
+                var cxt = canvas.getContext('2d');
+                cxt.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.parentNode.removeChild(canvas);
+            }
+            window.cancelAnimationFrame(stop);
+            staticx = false;
+        } else {
+            startSakura();
         }
 
         
-        window.cancelAnimationFrame(stop);
-        staticx = false;
-    } else {
-        startSakura();
+        sakuraEnabled = !staticx;
+        localStorage.setItem("sakuraEnabled", sakuraEnabled);
     }
-}
+
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        if (sakuraEnabled) {
+            startSakura();
+        }
+    });
 </script>
+
 
 
 
