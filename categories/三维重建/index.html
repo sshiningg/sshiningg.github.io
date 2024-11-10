@@ -59,7 +59,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "datePublished": "2024-11-06T00:00:00+00:00",
-        "dateModified": "2024-11-09T17:00:29+08:00",
+        "dateModified": "2024-11-10T00:30:45+08:00",
         "url": "http://localhost:1313/categories/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/",
         "name": "分类：三维重建",
         "description": "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。",
@@ -156,7 +156,7 @@
     </ul>
 </nav>
 
-                    <a href="javascript:void(0);" onclick="toggleSakura()">🌸</a>
+                    <a id="sakura-toggle-btn" href="javascript:void(0);" onclick="toggleSakura()">💮</a>
 
                 </div>
             </div>
@@ -563,26 +563,79 @@
 </html>
 
 <script>
-    var sakuraEnabled = false; 
+    var sakuraEnabled = localStorage.getItem("sakuraEnabled") === "true";  
+    var staticx = sakuraEnabled;  
+    var stop;  
+
+    function startSakura() {
+        if (!staticx) {
+            
+            var canvas = document.createElement('canvas');
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.setAttribute('style', 'position: fixed; left: 0; top: 0; pointer-events: none;');
+            canvas.setAttribute('id', 'canvas_sakura');
+            document.body.appendChild(canvas);
+
+            var cxt = canvas.getContext('2d');
+            var sakuraList = new SakuraList();
+            for (var i = 0; i < 50; i++) {
+                var sakura = new Sakura(getRandom('x'), getRandom('y'), getRandom('s'), getRandom('r'), {
+                    x: getRandom('fnx'),
+                    y: getRandom('fny'),
+                    r: getRandom('fnr')
+                });
+                sakura.draw(cxt);
+                sakuraList.push(sakura);
+            }
+
+            function animation() {
+                cxt.clearRect(0, 0, canvas.width, canvas.height);
+                sakuraList.update();
+                sakuraList.draw(cxt);
+                stop = requestAnimationFrame(animation);
+            }
+
+            stop = requestAnimationFrame(animation);
+            staticx = true;
+        }
+    }
 
     function toggleSakura() {
+	var button = document.getElementById("sakura-toggle-btn"); 
+
         if (staticx) {
-        var canvas = document.getElementById("canvas_sakura");
-        if (canvas) {
-            
-            var cxt = canvas.getContext('2d');
-            cxt.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.parentNode.removeChild(canvas);
+            var canvas = document.getElementById("canvas_sakura");
+            if (canvas) {
+                var cxt = canvas.getContext('2d');
+                cxt.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.parentNode.removeChild(canvas);
+            }
+            window.cancelAnimationFrame(stop);
+            staticx = false;
+        } else {
+            startSakura();
         }
 
         
-        window.cancelAnimationFrame(stop);
-        staticx = false;
-    } else {
-        startSakura();
+        sakuraEnabled = !staticx;
+        localStorage.setItem("sakuraEnabled", sakuraEnabled);
+
+	
+        document.getElementById("sakura-toggle-btn").textContent = sakuraEnabled ? "🌸" : "💮";
     }
-}
+
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        if (sakuraEnabled) {
+            startSakura();
+        }
+	
+        document.getElementById("sakura-toggle-btn").textContent = sakuraEnabled ? "🌸" : "💮";
+    });
 </script>
+
+
 
 
 

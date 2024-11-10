@@ -59,7 +59,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "datePublished": "2024-11-04T00:00:00+00:00",
-        "dateModified": "2024-11-09T16:25:31+00:00",
+        "dateModified": "2024-11-10T06:34:57+00:00",
         "url": "https://example.com/categories/markdown%E8%AF%AD%E6%B3%95/",
         "name": "分类：Markdown语法",
         "description": "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。",
@@ -156,7 +156,7 @@
     </ul>
 </nav>
 
-                    <a href="javascript:void(0);" onclick="toggleSakura()">🌸</a>
+                    <a id="sakura-toggle-btn" href="javascript:void(0);" onclick="toggleSakura()">💮</a>
 
                 </div>
             </div>
@@ -602,6 +602,8 @@
     }
 
     function toggleSakura() {
+	var button = document.getElementById("sakura-toggle-btn"); 
+
         if (staticx) {
             var canvas = document.getElementById("canvas_sakura");
             if (canvas) {
@@ -618,6 +620,9 @@
         
         sakuraEnabled = !staticx;
         localStorage.setItem("sakuraEnabled", sakuraEnabled);
+
+	
+        document.getElementById("sakura-toggle-btn").textContent = sakuraEnabled ? "🌸" : "💮";
     }
 
     
@@ -625,8 +630,11 @@
         if (sakuraEnabled) {
             startSakura();
         }
+	
+        document.getElementById("sakura-toggle-btn").textContent = sakuraEnabled ? "🌸" : "💮";
     });
 </script>
+
 
 
 
